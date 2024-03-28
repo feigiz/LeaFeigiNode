@@ -1,11 +1,11 @@
 
 function getTodoQuery() {
-    const query = `SELECT * FROM leafeiginodedb.todos WHERE isActive = 1`;
+    const query = `SELECT * FROM leafeiginodedb.todos`;
     return query
 }
 
 function getTodoByIdQuery() {
-    const query = `SELECT * FROM leafeiginodedb.todos where id = ? AND isActive = 1`;
+    const query = `SELECT * FROM leafeiginodedb.todos where id = ?`;
     return query
 }
 
@@ -18,8 +18,8 @@ function addTodoQuery(newTodo) {
 }
 
 function deleteTodoQuery() {
-    const query = `UPDATE leafeiginodedb.todos SET isActive = 0 where id = ?`;
-    // const query = `DELETE FROM leafeiginodedb.todos where id = ?`;
+    // const query = `UPDATE leafeiginodedb.todos SET isActive = 0 where id = ?`;
+    const query = `DELETE FROM leafeiginodedb.todos where id = ?`;
     return query
 }
 

@@ -67,8 +67,7 @@ export class TodoController {
             console.log("todo");
             console.log(req.params.id);
             console.log(req.body);
-            const todoService = new TodoService();
-            const resultItems = await todoService.updeteTodo()
+            
             res.status(200).json({ status: 200, data: req.params.id });
         }
         catch (ex) {

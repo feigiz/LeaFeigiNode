@@ -30,5 +30,4 @@ export class TodoService {
         const queryTodo = updeteTodoQuery();
         await executeQuery(queryTodo, [id]);
     }
-    
 }

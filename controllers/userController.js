@@ -4,7 +4,7 @@ export class UserController {
     async checkUserPassword(req, res) {
         try {
             const userService = new UserService();
-            await userService.checkUserPassword(req.body);
+            await userService.checkUserPassword(req.params.id, req.body);
             //שיחזיר דברים אחרים
             res.status(200).json({ status: 200 });
         }

@@ -1,4 +1,10 @@
 
+function checkUserPasswordQuery() {
+    console.log(username, password)
+    // const query = `SELECT * FROM leafeiginodedb.users WHERE isActive = 1`;
+    // return query
+}
+
 function getUserQuery() {
     const query = `SELECT * FROM leafeiginodedb.users WHERE isActive = 1`;
     return query
@@ -29,5 +35,5 @@ function updeteUserQuery(user) {
 }
 
 export {
-    getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updeteUserQuery
+    getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updeteUserQuery, checkUserPasswordQuery
 }

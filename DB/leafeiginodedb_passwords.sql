@@ -23,12 +23,12 @@ DROP TABLE IF EXISTS `passwords`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `passwords` (
-  `userId` int NOT NULL,
+  `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
-  PRIMARY KEY (`userId`),
+  PRIMARY KEY (`username`),
   UNIQUE KEY `password_UNIQUE` (`password`),
-  KEY `passwordUserId_idx` (`userId`),
-  CONSTRAINT `passwordUserId` FOREIGN KEY (`userId`) REFERENCES `users` (`id`)
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  KEY `passwordUserId_idx` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -38,7 +38,7 @@ CREATE TABLE `passwords` (
 
 LOCK TABLES `passwords` WRITE;
 /*!40000 ALTER TABLE `passwords` DISABLE KEYS */;
-INSERT INTO `passwords` VALUES (2,'anastasia.net'),(1,'hildegard.org'),(4,'kale.biz'),(3,'ramiro.info');
+INSERT INTO `passwords` VALUES ('Antonette','anastasia.net'),('Bret','hildegard.org'),('Karianne','kale.biz'),('Samantha','ramiro.info');
 /*!40000 ALTER TABLE `passwords` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-27 17:36:14
+-- Dump completed on 2024-03-31 21:17:14

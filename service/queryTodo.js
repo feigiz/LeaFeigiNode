@@ -9,6 +9,11 @@ function getTodoByIdQuery() {
     return query
 }
 
+function getTodoByUserIdQuery() {
+    const query = `SELECT * FROM leafeiginodedb.todos where userId = ?`;
+    return query
+}
+
 function addTodoQuery(newTodo) {
     // const query = `INSERT INTO leafeiginodedb.todos VALUES (${newTodo.id, newTodo.name, newTodo.todoname, newTodo.email, newTodo.phone})`;
     // const query = `INSERT INTO leafeiginodedb.todos VALUES (5, 'Lea salikov','leasali','leasali@gmail.com','0583270933',true)`;
@@ -29,5 +34,5 @@ function updeteTodoQuery(todo) {
 }
 
 export {
-    getTodoQuery, getTodoByIdQuery, addTodoQuery, deleteTodoQuery, updeteTodoQuery
+    getTodoQuery, getTodoByIdQuery, addTodoQuery, deleteTodoQuery, updeteTodoQuery, getTodoByUserIdQuery
 }

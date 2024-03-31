@@ -1,6 +1,21 @@
 import { UserService } from '../service/userService.js'
 export class UserController {
 
+    async checkUserPassword(req, res) {
+        try {
+            const userService = new UserService();
+            await userService.checkUserPassword(req.body);
+            //שיחזיר דברים אחרים
+            res.status(200).json({ status: 200 });
+        }
+        catch (ex) {
+            const err = {}
+            err.statusCode = 500;
+            err.message = ex;
+            next(err)
+        }
+    }
+
     async getUser(req, res, next) {
         try {
             const userService = new UserService();

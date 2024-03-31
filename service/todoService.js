@@ -26,8 +26,8 @@ export class TodoService {
         await executeQuery(queryTodo, [id]);
     }
 
-    async updeteTodo(id) {
-        const queryTodo = updeteTodoQuery();
-        await executeQuery(queryTodo, [id]);
-    }
+    // async updeteTodo(id) {
+    //     const queryTodo = updeteTodoQuery();
+    //     await executeQuery(queryTodo, [id]);
+    // }
 }

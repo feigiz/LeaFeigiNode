@@ -1,13 +1,15 @@
 import express from 'express';
+import cors from 'cors';
 import { todoRouter } from './router/todoRouter.js';
 import { userRouter } from './router/userRouter.js'
 import { postRouter } from './router/postRouter.js'
 import { commentRouter } from './router/commentRouter.js'
-import {logErrors} from './middleware/logError.js'
+import { logErrors } from './middleware/logError.js'
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.use('/users', userRouter);
 app.use('/todos', todoRouter);

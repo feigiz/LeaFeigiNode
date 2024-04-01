@@ -5,9 +5,9 @@ import { getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updeteUs
 export class UserService {
 
     async checkUserPassword(username, password) {
-        console.log(username, password)
         const queryUser = checkUserPasswordQuery();
         const result = await executeQuery(queryUser, [username, password]);
+        console.log(result);
         return result;
     }
 

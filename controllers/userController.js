@@ -15,11 +15,12 @@ export class UserController {
         }
     }
 
-    async getUserById(req, res) {
+    async getUserById(req, res, next) {
         try {
             const userService = new UserService();
             const resultItem = await userService.getUserById(req.params.id);
-            res.status(200).json({ status: 200, data: resultItem });
+            res.status(200).json(resultItem);
+            // res.status(200).json({ status: 200, data: resultItem });
         }
         catch (ex) {
             const err = {}
@@ -29,13 +30,13 @@ export class UserController {
         }
     }
 
-    async checkUserPassword(req, res) {
+    async checkUserPassword(req, res,next) {
         try {
             console.log(req.body.password);
             const userService = new UserService();
             const resultItem = await userService.checkUserPassword(req.params.username, req.body.password);
-            console.log(resultItem);
-            res.status(200).json({ status: 200, data: resultItem });
+            res.status(200).json(resultItem);
+            // res.status(200).json({ status: 200, data: resultItem });
         }
         catch (ex) {
             const err = {}
@@ -45,11 +46,12 @@ export class UserController {
         }
     }
 
-    async addUser(req, res) {
+    async addUser(req, res,next) {
         try {
             const userService = new UserService();
             await userService.addUser(req.body);
-            res.status(200).json({ status: 200 });
+            res.status(200).json();
+            // res.status(200).json({ status: 200 });
         }
         catch (ex) {
             const err = {}
@@ -60,13 +62,14 @@ export class UserController {
     }
 
 
-    async deleteUser(req, res) {
+    async deleteUser(req, res,next) {
         try {
             console.log("user");
             console.log(req.params.id);
             const userService = new UserService();
             await userService.deleteUser(req.params.id);
-            res.status(200).json({ status: 200, data: req.params.id });
+            res.status(200).json(req.params.id);//מה??
+            // res.status(200).json({ status: 200, data: req.params.id });
         }
         catch (ex) {
             const err = {}
@@ -76,7 +79,7 @@ export class UserController {
         }
     }
 
-    async updateUser(req, res) {
+    async updateUser(req, res,next) {
         try {
             console.log("user");
             console.log(req.params.id);

@@ -19,7 +19,7 @@ function Signup() {
 
     async function checkUser() {
         try {
-            const response = await fetch(`http://localhost:3000/users?username=${userIdentifyDetails.current.username}`);
+            const response = await fetch(`http://localhost:8080/users?username=${userIdentifyDetails.current.username}`);
             const user = await response.json();
             if (!response.ok)
                 throw 'Error' + response.status + ': ' + response.statusText;

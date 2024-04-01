@@ -23,14 +23,14 @@ DROP TABLE IF EXISTS `todos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `todos` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `completed` tinyint NOT NULL DEFAULT '0',
   `userId` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `userId_idx` (`userId`),
+  KEY `totoUserId_idx` (`userId`),
   CONSTRAINT `totoUserId` FOREIGN KEY (`userId`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `todos` (
 
 LOCK TABLES `todos` WRITE;
 /*!40000 ALTER TABLE `todos` DISABLE KEYS */;
-INSERT INTO `todos` VALUES (1,'delectus aut autem',0,1),(2,'quis ut nam facilis et officia qui',0,1),(21,'suscipit repellat esse quibusdam voluptatem incidunt',0,2),(22,'distinctio vitae autem nihil ut molestias quo',0,2);
+INSERT INTO `todos` VALUES (1,'delectus aut autem',0,1),(2,'quis ut nam facilis et officia qui',0,1),(21,'suscipit repellat esse quibusdam voluptatem incidunt',0,2),(22,'distinctio vitae autem nihil ut molestias quo',0,2),(23,'ttt',0,1),(24,'lea',0,1);
 /*!40000 ALTER TABLE `todos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-31 21:17:14
+-- Dump completed on 2024-04-01 19:59:01

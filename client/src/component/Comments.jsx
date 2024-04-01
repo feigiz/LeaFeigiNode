@@ -16,7 +16,7 @@ function Comments() {
     const { post } = state;
 
     useEffect(() => {
-        fetch(`http://localhost:3000/comments?postId=${post.id}`)
+        fetch(`http://localhost:8080/comments?postId=${post.id}`)
             .then(response => {
                 if (!response.ok)
                     throw 'Error' + response.status + ': ' + response.statusText;
@@ -34,7 +34,7 @@ function Comments() {
         event.preventDefault();
         const { name, body } = event.target
         const newComment = { postId: post.id, id: `${nextId}`, name: name.value, email: userDetails.email, body: body.value }
-        fetch('http://localhost:3000/comments', {
+        fetch('http://localhost:8080/comments', {
             method: 'POST',
             body: JSON.stringify(newComment),
             headers: { 'Content-type': 'application/json; charset=UTF-8' },
@@ -50,7 +50,7 @@ function Comments() {
 
     function deleteComment(i, id) {
         if (confirm('Are you sure you want to delete this comment from the database?')) {
-            fetch(`http://localhost:3000/comments/${id}`, {
+            fetch(`http://localhost:8080/comments/${id}`, {
                 method: 'DELETE'
             }).then(response => {
                 if (!response.ok)
@@ -66,7 +66,7 @@ function Comments() {
     function updateComment(event, i, id) {
         event.preventDefault()
         const updatedComment = { name: event.target.name.value, body: event.target.body.value }
-        fetch(`http://localhost:3000/comments/${id}`, {
+        fetch(`http://localhost:8080/comments/${id}`, {
             method: 'PATCH',
             body: JSON.stringify(updatedComment),
             headers: {

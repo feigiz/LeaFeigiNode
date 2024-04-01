@@ -16,7 +16,7 @@ export class CommentController {
         }
     }
 
-    async getCommentById(req, res) {
+    async getCommentById(req, res, next) {
         try {
             const commentService = new CommentService();
             const resultItem = await commentService.getCommentById(req.params.id);
@@ -31,7 +31,7 @@ export class CommentController {
     }
 
 
-    async addComment(req, res) {
+    async addComment(req, res, next) {
         try {
             const commentService = new CommentService();
              await commentService.addComment(req.body);
@@ -45,7 +45,7 @@ export class CommentController {
         }
     }
 
-    async deleteComment(req, res) {
+    async deleteComment(req, res, next) {
         try {
             console.log("comment");
             console.log(req.params.id);
@@ -61,7 +61,7 @@ export class CommentController {
         }
     }
 
-    async updateComment(req, res) {
+    async updateComment(req, res, next) {
         try {
             console.log("comment");
             console.log(req.params.id);

@@ -15,11 +15,12 @@ export class TodoController {
         }
     }
 
-    async getTodoById(req, res) {
+    async getTodoById(req, res,next) {
         try {
             const todoService = new TodoService();
             const resultItem = await todoService.getTodoById(req.params.id);
-            res.status(200).json({ status: 200, data: resultItem });
+            // res.status(200).json({ status: 200, data: resultItem });
+            res.status(200).json(resultItem);
         }
         catch (ex) {
             const err = {}
@@ -29,22 +30,7 @@ export class TodoController {
         }
     }
 
-    // async getTodoByUserId(req, res) {
-    //     try {
-    //         const todoService = new TodoService();
-    //         const resultItem = await todoService.getTodoByUserId(req.query.id);
-    //         res.status(200).json({ status: 200, data: resultItem });
-    //     }
-    //     catch (ex) {
-    //         const err = {}
-    //         err.statusCode = 500;
-    //         err.message = ex;
-    //         next(err)
-    //     }
-    // }
-
-
-    async addTodo(req, res) {
+    async addTodo(req, res,next) {
         try {
             const todoService = new TodoService();
             await todoService.addTodo(req.body);
@@ -58,7 +44,7 @@ export class TodoController {
         }
     }
 
-    async deleteTodo(req, res) {
+    async deleteTodo(req, res,next) {
         try {
             console.log("todo");
             console.log(req.params.id);
@@ -74,7 +60,7 @@ export class TodoController {
         }
     }
 
-    async updateTodo(req, res) {
+    async updateTodo(req, res,next) {
         try {
             console.log("todo");
             console.log(req.params.id);

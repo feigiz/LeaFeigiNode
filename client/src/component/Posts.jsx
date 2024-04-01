@@ -2,19 +2,19 @@ import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import trash from "../icons/trash.png"
 import { AppContext } from "../App";
-import useNextId from "./useNextId";
+// import useNextId from "./useNextId";
 
 function Posts() {
     const navigate = useNavigate();
     const [showAdditionForm, setShowAdditionForm] = useState(false);
-    const [nextId, setNextId] = useNextId(3);
+    // const [nextId, setNextId] = useNextId(3);
     const [searchType, setSearchType] = useState()
     const [posts, setPosts] = useState([])
     const [originalPosts, setOriginalPosts] = useState([])
     const { userDetails } = useContext(AppContext)
 
     useEffect(() => {
-        fetch(`http://localhost:3000/posts?userId=${userDetails.id}`)
+        fetch(`http://localhost:8080/posts?userId=${userDetails.id}`)
             .then(response => {
                 if (!response.ok)
                     throw 'Error' + response.status + ': ' + response.statusText;
@@ -33,7 +33,7 @@ function Posts() {
         event.preventDefault();
         const { title, body } = event.target;
         const newPost = { userId: userDetails.id, id: `${nextId}`, title: title.value, body: body.value }
-        fetch('http://localhost:3000/posts', {
+        fetch('http://localhost:8080/posts', {
             method: 'POST',
             body: JSON.stringify(newPost),
             headers: { 'Content-type': 'application/json; charset=UTF-8' },
@@ -50,7 +50,7 @@ function Posts() {
 
     function deletePost(originalIndex, i, id) {
         if (confirm('Are you sure you want to delete this post from the database?')) {
-            fetch(`http://localhost:3000/posts/${id}`, {
+            fetch(`http://localhost:8080/posts/${id}`, {
                 method: 'DELETE'
             }).then(response => {
                 if (!response.ok)

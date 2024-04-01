@@ -3,7 +3,7 @@ import { AppContext } from "../App";
 
 function Info() {
     const { userDetails } = useContext(AppContext)
-
+    console.log(userDetails);
     const print = (detail) => {
         return Object.keys(detail).map((key) => (typeof detail[key] === 'object' ?
             <div key={key} >

@@ -29,9 +29,9 @@ function Home() {
                         <NavLink to="./posts"
                                 style={({ isActive }) => isActive ? { backgroundColor: "rgb(224, 214, 239)" } : {}}>
                                 Posts</NavLink>
-                        <NavLink to="./albums"
+                        {/* <NavLink to="./albums"
                                 style={({ isActive }) => isActive ? { backgroundColor: "rgb(224, 214, 239)" } : {}}>
-                                Albums</NavLink>
+                                Albums</NavLink> */}
                 </nav>
                 <Outlet />
         </>);

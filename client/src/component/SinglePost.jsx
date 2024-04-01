@@ -14,7 +14,7 @@ function SinglePost() {
 
     function updatePost(data) {
         const updatedPost = { title: data.title, body: data.body }
-        fetch(`http://localhost:3000/posts/${post.id}`, {
+        fetch(`http://localhost:8080/posts/${post.id}`, {
             method: 'PATCH',
             body: JSON.stringify(updatedPost),
             headers: { 'Content-type': 'application/json; charset=UTF-8', },
@@ -29,7 +29,7 @@ function SinglePost() {
 
     function deletePost() {
         if (confirm('Are you sure you want to delete this post from the database?')) {
-            fetch(`http://localhost:3000/posts/${post.id}`, {
+            fetch(`http://localhost:8080/posts/${post.id}`, {
                 method: 'DELETE'
             }).then(response => {
                 if (!response.ok)

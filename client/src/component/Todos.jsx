@@ -3,23 +3,22 @@ import trash from "../icons/trash.png"
 import edit from "../icons/edit.png"
 import { useContext } from "react";
 import { AppContext } from "../App";
-import useNextId from "./useNextId";
+// import useNextId from "./useNextId";
 
 function Todos() {
     const { userDetails } = useContext(AppContext)
     const [originalTodos, setOriginalTodos] = useState([]);
     const [todos, setTodos] = useState([]);
     const [showAdditionForm, setShowAdditionForm] = useState(false);
-    const [nextId, setNextId] = useNextId(2);
+    // const [nextId, setNextId] = useNextId(2);
     const [searchType, setSearchType] = useState();
 
     useEffect(() => {
-        // fetch(`http://localhost:3000/todos?userId=${userDetails.id}`)
         fetch(`http://localhost:8080/todos?userId=${userDetails.id}`)
             .then(response => {
                 if (!response.ok)
                     throw 'Error' + response.status + ': ' + response.statusText;
-                return response.json();//איך?
+                return response.json();
             })
             .then(data => {
                 setOriginalTodos(data);
@@ -32,25 +31,25 @@ function Todos() {
 
     function addTodo(event) {
         event.preventDefault();
-        const newTodo = { userId: userDetails.id, id: `${nextId}`, title: event.target[0].value, completed: false }
-        fetch('http://localhost:3000/todos', {
+        const newTodo = { title: event.target[0].value, completed: false, userId: userDetails.id }
+        fetch('http://localhost:8080/todos', {
             method: 'POST',
             body: JSON.stringify(newTodo),
             headers: { 'Content-type': 'application/json; charset=UTF-8' },
         }).then(response => {
             if (!response.ok)
                 throw 'Error' + response.status + ': ' + response.statusText;
+                return response.json();
         }).then(() => {
             setOriginalTodos(prev => [...prev, newTodo])
             setTodos(prev => [...prev, { ...newTodo, originalIndex: originalTodos.length, editable: false }])
             setShowAdditionForm(false)
-            setNextId(prevId => prevId + 1)
+            // setNextId(prevId => prevId + 1)
         }).catch((ex) => alert(ex));
     }
 
     function deleteTodo(originalIndex, i, id) {
         if (confirm('Are you sure you want to delete this todo from the database?')) {
-            // fetch(`http://localhost:3000/todos/${id}`, {
             fetch(`http://localhost:8080/todos/${id}`, {
                 method: 'DELETE'
             }).then(response => {
@@ -68,7 +67,7 @@ function Todos() {
         event.preventDefault()
         const { title, completed } = event.target;
         const updatedTodo = { title: title.value, completed: completed.checked }
-        fetch(`http://localhost:3000/todos/${id}`, {
+        fetch(`http://localhost:8080/todos/${id}`, {
             method: 'PATCH',
             body: JSON.stringify(updatedTodo),
             headers: { 'Content-type': 'application/json; charset=UTF-8' },

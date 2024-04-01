@@ -15,7 +15,7 @@ export class PostController {
         }
     }
 
-    async getPostById(req, res) {
+    async getPostById(req, res,next) {
         try {
             const postService = new PostService();
             const resultItem = await postService.getPostById(req.params.id);
@@ -29,7 +29,7 @@ export class PostController {
         }
     }
 
-    async addPost(req, res) {
+    async addPost(req, res, next) {
         try {
             const postService = new PostService();
             await postService.addPost(req.body);
@@ -43,7 +43,7 @@ export class PostController {
         }
     }
 
-    async deletePost(req, res) {
+    async deletePost(req, res, next) {
         try {
             console.log("post");
             console.log(req.params.id);
@@ -59,7 +59,7 @@ export class PostController {
         }
     }
 
-    async updatePost(req, res) {
+    async updatePost(req, res, next) {
         try {
             console.log("post");
             console.log(req.params.id);

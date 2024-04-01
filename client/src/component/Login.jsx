@@ -17,45 +17,6 @@ function Login() {
     }, [])
 
     function loginUser(name, password) {
-        //  const response = await fetch(`http://localhost:8080/users?username=${name}&&website=${password}`);
-
-        // function addTodo(event) {
-        //     event.preventDefault();
-        //     const newTodo = { userId: userDetails.id, id: `${nextId}`, title: event.target[0].value, completed: false }
-        //     fetch('http://localhost:3000/todos', {
-        //         method: 'POST',
-        //         body: JSON.stringify(newTodo),
-        //         headers: { 'Content-type': 'application/json; charset=UTF-8' },
-        //     }).then(response => {
-        //         if (!response.ok)
-        //             throw 'Error' + response.status + ': ' + response.statusText;
-        //     }).then(() => {
-        //         setOriginalTodos(prev => [...prev, newTodo])
-        //         setTodos(prev => [...prev, { ...newTodo, originalIndex: originalTodos.length, editable: false }])
-        //         setShowAdditionForm(false)
-        //         setNextId(prevId => prevId + 1)
-        //     }).catch((ex) => alert(ex));
-        // }
-
-
-        // useEffect(() => {
-        //     // fetch(`http://localhost:3000/todos?userId=${userDetails.id}`)
-        //     fetch(`http://localhost:8080/todos?userId=${userDetails.id}`)
-        //         .then(response => {
-        //             if (!response.ok)
-        //                 throw 'Error' + response.status + ': ' + response.statusText;
-        //             return response.json();//איך?
-        //         })
-        //         .then(data => {
-        //             setOriginalTodos(data);
-        //             let todosArr = []
-        //             for (let i = 0; i < data.length; i++)
-        //                 todosArr.push({ ...data[i], originalIndex: i, editable: false })
-        //             setTodos(todosArr);
-        //         }).catch(ex => alert(ex))
-        // }, [])
-        // const json = response.json();
-
         fetch(`http://localhost:8080/users/${name}`, {
             method: 'POST',
             body: JSON.stringify({ password: password }),
@@ -65,6 +26,8 @@ function Login() {
                 throw 'Error' + response.status + ': ' + response.statusText;
             return response.json();
         }).then(user => {
+            user = user[0];
+            console.log(user)
             if (!user)
                 throw 'incorrect data, you have to signup'
             else {

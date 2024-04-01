@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `username` varchar(45) NOT NULL,
   `email` varchar(45) DEFAULT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   CONSTRAINT `userUsername` FOREIGN KEY (`username`) REFERENCES `passwords` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Leanne Graham','Bret','Sincere@april.biz','1-770-736-8031 x56442',1),(2,'Ervin Howell','Antonette','Shanna@melissa.tv','010-692-6593 x09125',1),(3,'Clementine Bauch','Samantha','Nathan@yesenia.net','1-463-123-4447',1),(4,'Patricia Lebsack','Karianne','Julianne.OConner@kory.org','493-170-9623 x156',1);
+INSERT INTO `users` VALUES (1,'Leanne Graham','Bret','Sincere@april.biz','1-770-736-8031 x56442',1),(2,'Ervin Howell','Antonette','Shanna@melissa.tv','010-692-6593 x09125',0),(3,'Clementine Bauch','Samantha','Nathan@yesenia.net','1-463-123-4447',1),(4,'Patricia Lebsack','Karianne','Julianne.OConner@kory.org','493-170-9623 x156',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-31 21:17:14
+-- Dump completed on 2024-04-01 19:59:01

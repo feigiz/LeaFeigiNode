@@ -15,7 +15,7 @@ function RegisterDetails({ userIdentifyDetails }) {
     function onSubmitFullDetails(data) {
         const { name, email, street, suite, city, zipcode, lat, lng, phone,
             companyName, catchPhrase, bs } = data;
-        fetch('http://localhost:3000/users', {
+        fetch('http://localhost:8080/users', {
             method: 'POST',
             body: JSON.stringify({
                 id: `${nextId}`, name: name, username: userIdentifyDetails.current.username, email: email,

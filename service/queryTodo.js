@@ -14,8 +14,8 @@ function getTodoByUserIdQuery() {
     return query
 }
 
-function addTodoQuery(newTodo) {
-    // const query = `INSERT INTO leafeiginodedb.todos VALUES (${newTodo.id, newTodo.name, newTodo.todoname, newTodo.email, newTodo.phone})`;
+function addTodoQuery() {
+    const query = `INSERT INTO leafeiginodedb.todos VALUES (null ,? ,? ,? )`;
     // const query = `INSERT INTO leafeiginodedb.todos VALUES (5, 'Lea salikov','leasali','leasali@gmail.com','0583270933',true)`;
     //צריך לבדוק עם הוא קיים ופעיל/ לא פעיל (ואז להפוך לפעיל)
     //וצריך גם שיכניס סיסמא

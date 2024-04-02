@@ -45,8 +45,6 @@ export class PostController {
 
     async deletePost(req, res, next) {
         try {
-            console.log("post");
-            console.log(req.params.id);
             const postService = new PostService();
             await postService.deletePost(req.params.id);
             res.status(200).json({ status: 200, data: req.params.id });
@@ -61,9 +59,8 @@ export class PostController {
 
     async updatePost(req, res, next) {
         try {
-            console.log("post");
-            console.log(req.params.id);
-            console.log(req.body);
+            const postService = new PostService();
+            await postService.updatePost(req.body, req.params.id);
             res.status(200).json({ status: 200, data: req.params.id });
         }
         catch (ex) {

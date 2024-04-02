@@ -13,18 +13,11 @@ function RegisterDetails({ userIdentifyDetails }) {
     const { register, handleSubmit } = useForm();
 
     function onSubmitFullDetails(data) {
-        const { name, email, street, suite, city, zipcode, lat, lng, phone,
-            companyName, catchPhrase, bs } = data;
+        const { name, email, phone} = data;
         fetch('http://localhost:8080/users', {
             method: 'POST',
-            body: JSON.stringify({
-                id: `${nextId}`, name: name, username: userIdentifyDetails.current.username, email: email,
-                address: {
-                    street: street, suite: suite, city: city, zipcode: zipcode,
-                    geo: { lat: lat, lng: lng }
-                },
-                phone: phone, website: userIdentifyDetails.current.website,
-                company: { name: companyName, catchPhrase: catchPhrase, bs: bs }
+            body: JSON.stringify({ name: name, username: userIdentifyDetails.current.username, email: email,
+                phone: phone, website: userIdentifyDetails.current.website
             }),
             headers: { 'Content-type': 'application/json; charset=UTF-8' },
         }).then(response => {

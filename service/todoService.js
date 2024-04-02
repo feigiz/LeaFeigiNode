@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getTodoQuery, getTodoByIdQuery, addTodoQuery, deleteTodoQuery, updeteTodoQuery, getTodoByUserIdQuery } from './queryTodo.js'
+import { getTodoQuery, getTodoByIdQuery, addTodoQuery, deleteTodoQuery, updateTodoQuery, getTodoByUserIdQuery } from './queryTodo.js'
 
 export class TodoService {
 
@@ -23,7 +23,6 @@ export class TodoService {
     }
 
     async addTodo(newTodo) {
-        console.log(newTodo)
         const queryTodo = addTodoQuery();
         await executeQuery(queryTodo, Object.values(newTodo));
     }
@@ -33,8 +32,18 @@ export class TodoService {
         await executeQuery(queryTodo, [id]);
     }
 
-    // async updeteTodo(id) {
-    //     const queryTodo = updeteTodoQuery();
-    //     await executeQuery(queryTodo, [id]);
-    // }
+    async updateTodo(updatedTodo, id) {
+        // const data = Object.entries(updating).map(([key, value]) => (key, value));
+        // data.push(id)
+        // console.log("data");
+        // console.log(data);
+        // const queryTodo = updateTodoQuery();
+        // // await executeQuery(queryTodo, Object.keys(updating), Object.values(updating), id);
+        // await executeQuery(queryTodo, data);
+
+        let data = Object.values(updatedTodo);
+        data.push(id)
+        const queryTodo = updateTodoQuery();
+        await executeQuery(queryTodo, data);
+    }
 }

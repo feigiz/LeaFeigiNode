@@ -14,11 +14,8 @@ function getPostByUserIdQuery() {
     return query
 }
 
-function addPostQuery(newPost) {
-    // const query = `INSERT INTO leafeiginodedb.posts VALUES (${newPost.id, newPost.name, newPost.postname, newPost.email, newPost.phone})`;
-    // const query = `INSERT INTO leafeiginodedb.posts VALUES (5, 'Lea salikov','leasali','leasali@gmail.com','0583270933',true)`;
-    //צריך לבדוק עם הוא קיים ופעיל/ לא פעיל (ואז להפוך לפעיל)
-    //וצריך גם שיכניס סיסמא
+function addPostQuery() {
+    const query = `INSERT INTO leafeiginodedb.posts VALUES (null ,? ,? ,? )`;
     return query
 }
 
@@ -27,11 +24,11 @@ function deletePostQuery() {
     return query
 }
 
-function updetePostQuery(post) {
-    const query = `UPDATE ${post} FROM leafeiginodedb.posts where id = ?`;
+function updatePostQuery() {
+    const query = `UPDATE leafeiginodedb.posts SET title=?, body=?, userId=? where id = ?`;
     return query
 }
 
 export {
-    getPostQuery, getPostByIdQuery, addPostQuery, deletePostQuery, updetePostQuery, getPostByUserIdQuery
+    getPostQuery, getPostByIdQuery, addPostQuery, deletePostQuery, updatePostQuery, getPostByUserIdQuery
 }

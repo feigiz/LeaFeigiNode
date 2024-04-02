@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getPostQuery, getPostByIdQuery, addPostQuery, deletePostQuery, updetePostQuery, getPostByUserIdQuery } from './queryPost.js'
+import { getPostQuery, getPostByIdQuery, addPostQuery, deletePostQuery, updatePostQuery, getPostByUserIdQuery } from './queryPost.js'
 
 export class PostService {
 
@@ -23,8 +23,8 @@ export class PostService {
     }
 
     async addPost(newPost) {
-        const queryPost = addPostQuery(newPost);
-        await executeQuery(queryPost);
+        const queryPost = addPostQuery();
+        await executeQuery(queryPost, Object.values(newPost));
     }
 
     async deletePost(id) {
@@ -32,9 +32,11 @@ export class PostService {
         await executeQuery(queryPost, [id]);
     }
 
-    async updetePost(id) {
-        const queryPost = updetePostQuery();
-        await executeQuery(queryPost, [id]);
+    async updatePost(updatedPost, id) {
+        let data = Object.values(updatedPost);
+        data.push(id)
+        const queryPost = updatePostQuery();
+        await executeQuery(queryPost, data);
     }
 
 }

@@ -15,7 +15,7 @@ export class TodoController {
         }
     }
 
-    async getTodoById(req, res,next) {
+    async getTodoById(req, res, next) {
         try {
             const todoService = new TodoService();
             const resultItem = await todoService.getTodoById(req.params.id);
@@ -30,7 +30,7 @@ export class TodoController {
         }
     }
 
-    async addTodo(req, res,next) {
+    async addTodo(req, res, next) {
         try {
             const todoService = new TodoService();
             await todoService.addTodo(req.body);
@@ -44,10 +44,8 @@ export class TodoController {
         }
     }
 
-    async deleteTodo(req, res,next) {
+    async deleteTodo(req, res, next) {
         try {
-            console.log("todo");
-            console.log(req.params.id);
             const todoService = new TodoService();
             await todoService.deleteTodo(req.params.id)
             res.status(200).json({ status: 200, data: req.params.id });
@@ -60,12 +58,10 @@ export class TodoController {
         }
     }
 
-    async updateTodo(req, res,next) {
+    async updateTodo(req, res, next) {
         try {
-            console.log("todo");
-            console.log(req.params.id);
-            console.log(req.body);
-
+            const todoService = new TodoService();
+            await todoService.updateTodo(req.body, req.params.id);
             res.status(200).json({ status: 200, data: req.params.id });
         }
         catch (ex) {

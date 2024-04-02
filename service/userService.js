@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updeteUserQuery, checkUserPasswordQuery } from './queryUser.js'
+import { getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, checkUserPasswordQuery } from './queryUser.js'
 
 export class UserService {
 
@@ -25,7 +25,7 @@ export class UserService {
 
     //למה שליחת הפרמטרים שונה?
     async addUser(newUser) {
-        const queryUser = addUserQuery(newUser);
+        const queryUser = addUserQuery();
         await executeQuery(queryUser);
     }
 
@@ -34,9 +34,11 @@ export class UserService {
         await executeQuery(queryUser, [id]);
     }
 
-    async updeteUser(id) {
-        const queryUser = updeteUserQuery();
-        await executeQuery(queryUser, [id]);
+    async updateUser(updatedUser, id) {
+        let data = Object.values(updatedUser);
+        data.push(id)
+        const queryUser = updateUserQuery();
+        await executeQuery(queryUser, data);
     }
 
 }

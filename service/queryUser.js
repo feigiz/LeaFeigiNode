@@ -17,7 +17,7 @@ function getUserByIdQuery() {
     return query
 }
 
-function addUserQuery(newUser) {
+function addUserQuery() {
     // const query = `INSERT INTO leafeiginodedb.users VALUES (${newUser.id, newUser.name, newUser.username, newUser.email, newUser.phone})`;
     // const query = `INSERT INTO leafeiginodedb.users VALUES (5, 'Lea salikov','leasali','leasali@gmail.com','0583270933',true)`;
     //צריך לבדוק עם הוא קיים ופעיל/ לא פעיל (ואז להפוך לפעיל)
@@ -31,11 +31,11 @@ function deleteUserQuery() {
     return query
 }
 
-function updeteUserQuery(user) {
-    const query = `UPDATE ${user} FROM leafeiginodedb.users where id = ?`;
+function updateUserQuery() {
+    const query = `UPDATE leafeiginodedb.users SET name=?, username=?, email=?, phone=?, isActive=? where id = ?`;
     return query
 }
 
 export {
-    getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updeteUserQuery, checkUserPasswordQuery
+    getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, checkUserPasswordQuery
 }

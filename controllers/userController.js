@@ -1,6 +1,6 @@
 import { UserService } from '../service/userService.js'
-export class UserController {
 
+export class UserController {
     async getUser(req, res, next) {
         try {
             const userService = new UserService();
@@ -30,9 +30,8 @@ export class UserController {
         }
     }
 
-    async checkUserPassword(req, res,next) {
+    async checkUserPassword(req, res, next) {
         try {
-            console.log(req.body.password);
             const userService = new UserService();
             const resultItem = await userService.checkUserPassword(req.params.username, req.body.password);
             res.status(200).json(resultItem);
@@ -46,7 +45,7 @@ export class UserController {
         }
     }
 
-    async addUser(req, res,next) {
+    async addUser(req, res, next) {
         try {
             const userService = new UserService();
             await userService.addUser(req.body);
@@ -62,10 +61,8 @@ export class UserController {
     }
 
 
-    async deleteUser(req, res,next) {
+    async deleteUser(req, res, next) {
         try {
-            console.log("user");
-            console.log(req.params.id);
             const userService = new UserService();
             await userService.deleteUser(req.params.id);
             res.status(200).json(req.params.id);//מה??
@@ -79,11 +76,10 @@ export class UserController {
         }
     }
 
-    async updateUser(req, res,next) {
+    async updateUser(req, res, next) {
         try {
-            console.log("user");
-            console.log(req.params.id);
-            console.log(req.body);
+            const userService = new UserService();
+            await userService.updateUser(req.body, req.params.id);
             res.status(200).json({ status: 200, data: req.params.id });
         }
         catch (ex) {

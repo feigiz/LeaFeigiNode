@@ -16,23 +16,20 @@ function getTodoByUserIdQuery() {
 
 function addTodoQuery() {
     const query = `INSERT INTO leafeiginodedb.todos VALUES (null ,? ,? ,? )`;
-    // const query = `INSERT INTO leafeiginodedb.todos VALUES (5, 'Lea salikov','leasali','leasali@gmail.com','0583270933',true)`;
-    //צריך לבדוק עם הוא קיים ופעיל/ לא פעיל (ואז להפוך לפעיל)
-    //וצריך גם שיכניס סיסמא
     return query
 }
 
 function deleteTodoQuery() {
-    // const query = `UPDATE leafeiginodedb.todos SET isActive = 0 where id = ?`;
     const query = `DELETE FROM leafeiginodedb.todos where id = ?`;
     return query
 }
 
-function updeteTodoQuery(todo) {
-    const query = `UPDATE ${todo} FROM leafeiginodedb.todos where id = ?`;
+function updateTodoQuery() {
+    // UPDATE leafeiginodedb.todos SET title="vfv", completed=1 where id = 25;
+    const query = `UPDATE leafeiginodedb.todos SET title=?, completed=?, userId=? where id = ?`;
     return query
 }
 
 export {
-    getTodoQuery, getTodoByIdQuery, addTodoQuery, deleteTodoQuery, updeteTodoQuery, getTodoByUserIdQuery
+    getTodoQuery, getTodoByIdQuery, addTodoQuery, deleteTodoQuery, updateTodoQuery, getTodoByUserIdQuery
 }

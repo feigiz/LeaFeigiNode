@@ -32,7 +32,7 @@ function Posts() {
     function addPost(event) {
         event.preventDefault();
         const { title, body } = event.target;
-        const newPost = { userId: userDetails.id, id: `${nextId}`, title: title.value, body: body.value }
+        let newPost = { title: title.value, body: body.value, userId: userDetails.id }
         fetch('http://localhost:8080/posts', {
             method: 'POST',
             body: JSON.stringify(newPost),
@@ -40,11 +40,13 @@ function Posts() {
         }).then(response => {
             if (!response.ok)
                 throw 'Error' + response.status + ': ' + response.statusText;
-        }).then(() => {
+            return response.json();
+        }).then(createdId => {
+            newPost = { ...newPost, id: createdId }
             setOriginalPosts(prev => [...prev, newPost])
             setPosts(prev => [...prev, { ...newPost, originalIndex: originalPosts.length }])
             setShowAdditionForm(false)
-            setNextId(prev => prev + 1)
+            // setNextId(prev => prev + 1)
         }).catch((ex) => alert(ex));
     }
 

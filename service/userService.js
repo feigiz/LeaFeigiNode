@@ -1,15 +1,14 @@
 
 import { executeQuery } from './db.js';
-import { getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, checkUserPasswordQuery } from './queryUser.js'
-
+import { getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, getUserByUsernameQuery } from './queryUser.js'
+// checkUserPasswordQuery
 export class UserService {
 
-    async checkUserPassword(username, password) {
-        const queryUser = checkUserPasswordQuery();
-        const result = await executeQuery(queryUser, [username, password]);
-        console.log(result);
-        return result;
-    }
+    // async checkUserPassword(username, password) {
+    //     const queryUser = checkUserPasswordQuery();
+    //     const result = await executeQuery(queryUser, [username, password]);
+    //     return result;
+    // }
 
     async getUser() {
         const queryUser = getUserQuery();
@@ -23,10 +22,16 @@ export class UserService {
         return result;
     }
 
-    //למה שליחת הפרמטרים שונה?
+    async getUserByUsername(username) {
+        const queryUser = getUserByUsernameQuery();
+        const result = await executeQuery(queryUser, [username]);
+        return result;
+    }
+
     async addUser(newUser) {
         const queryUser = addUserQuery();
-        await executeQuery(queryUser);
+        const result = await executeQuery(queryUser, Object.values(newUser));
+        return result;
     }
 
     async deleteUser(id) {

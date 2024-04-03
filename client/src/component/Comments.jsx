@@ -3,14 +3,14 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import trash from "../icons/trash.png"
 import edit from "../icons/edit.png"
 import { AppContext } from "../App";
-import useNextId from "./useNextId";
+// import useNextId from "./useNextId";
 
-
+ 
 function Comments() {
     const { state } = useLocation();
     const [showAdditionForm, setShowAdditionForm] = useState(false);
     const [comments, setComments] = useState([]);
-    const [nextId, setNextId] = useNextId(4);
+    // const [nextId, setNextId] = useNextId(4);
     const { userDetails } = useContext(AppContext)
     const navigate = useNavigate();
     const { post } = state;
@@ -33,18 +33,20 @@ function Comments() {
     function addComment(event) {
         event.preventDefault();
         const { name, body } = event.target
-        const newComment = { postId: post.id, id: `${nextId}`, name: name.value, email: userDetails.email, body: body.value }
+        let newComment = { name: name.value, email: userDetails.email, body: body.value, postId: post.id }
         fetch('http://localhost:8080/comments', {
             method: 'POST',
             body: JSON.stringify(newComment),
-            headers: { 'Content-type': 'application/json; charset=UTF-8' },
+            headers: { 'Content-type': 'application/json; charset=UTF-8' }
         }).then(response => {
             if (!response.ok)
                 throw 'Error' + response.status + ': ' + response.statusText;
-        }).then(() => {
+            return response.json();
+        }).then(createdId => {
+            newComment = { ...newComment, id: createdId }
             setComments(prev => [...prev, { ...newComment, editable: false }])
             setShowAdditionForm(false)
-            setNextId(prev => prev + 1)
+            // setNextId(prev => prev + 1)
         }).catch((ex) => alert(ex));
     }
 
@@ -65,13 +67,11 @@ function Comments() {
 
     function updateComment(event, i, id) {
         event.preventDefault()
-        const updatedComment = { name: event.target.name.value, body: event.target.body.value }
+        const updatedComment = { name: event.target.name.value, email: userDetails.email, body: event.target.body.value, postId: post.id }
         fetch(`http://localhost:8080/comments/${id}`, {
-            method: 'PATCH',
+            method: 'PUT',
             body: JSON.stringify(updatedComment),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
+            headers: { 'Content-type': 'application/json; charset=UTF-8' },
         }).then(response => {
             if (!response.ok)
                 throw 'Error' + response.status + ': ' + response.statusText;

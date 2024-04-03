@@ -24,7 +24,8 @@ export class CommentService {
 
     async addComment(newComment) {
         const queryComment = addCommentQuery();
-        await executeQuery(queryComment, Object.values(newComment));
+        const result = await executeQuery(queryComment, Object.values(newComment));
+        return result;
     }
 
     async deleteComment(id) {

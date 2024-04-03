@@ -1,11 +1,11 @@
 
-function checkUserPasswordQuery() {
-    const query = `SELECT * FROM leafeiginodedb.passwords P NATURAL JOIN
-    leafeiginodedb.users U WHERE U.username = ? AND P.password = ? AND isActive = 1`;
-    // const query = `SELECT * FROM leafeiginodedb.users WHERE EXISTS
-    // (SELECT * FROM leafeiginodedb.passwords WHERE username = ? AND password = ?)`;
-    return query
-}
+// function checkUserPasswordQuery() {
+//     const query = `SELECT * FROM leafeiginodedb.passwords P NATURAL JOIN
+//     leafeiginodedb.users U WHERE U.username = ? AND P.password = ? AND isActive = 1`;
+//     // const query = `SELECT * FROM leafeiginodedb.users WHERE EXISTS
+//     // (SELECT * FROM leafeiginodedb.passwords WHERE username = ? AND password = ?)`;
+//     return query
+// }
 
 function getUserQuery() {
     const query = `SELECT * FROM leafeiginodedb.users WHERE isActive = 1`;
@@ -13,7 +13,12 @@ function getUserQuery() {
 }
 
 function getUserByIdQuery() {
-    const query = `SELECT * FROM leafeiginodedb.users where id = ? AND isActive = 1`;
+    const query = `SELECT * FROM leafeiginodedb.users WHERE id = ? AND isActive = 1`;
+    return query
+}
+
+function getUserByUsernameQuery() {
+    const query = `SELECT * FROM leafeiginodedb.users WHERE username = ?`;
     return query
 }
 
@@ -26,16 +31,16 @@ function addUserQuery() {
 }
 
 function deleteUserQuery() {
-    const query = `UPDATE leafeiginodedb.users SET isActive = 0 where id = ?`;
-    // const query = `DELETE FROM leafeiginodedb.users where id = ?`;
+    const query = `UPDATE leafeiginodedb.users SET isActive = 0 WHERE id = ?`;
+    // const query = `DELETE FROM leafeiginodedb.users WHERE id = ?`;
     return query
 }
 
 function updateUserQuery() {
-    const query = `UPDATE leafeiginodedb.users SET name=?, username=?, email=?, phone=?, isActive=? where id = ?`;
+    const query = `UPDATE leafeiginodedb.users SET name=?, username=?, email=?, phone=?, isActive=? WHERE id = ?`;
     return query
 }
-
+// checkUserPasswordQuery
 export {
-    getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, checkUserPasswordQuery
+    getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, getUserByUsernameQuery
 }

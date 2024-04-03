@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { AppContext } from "../App";
-import useNextId from "./useNextId";
+// import useNextId from "./useNextId";
 
 function RegisterDetails({ userIdentifyDetails }) {
 
     const { setUserDetails } = useContext(AppContext)
     const navigate = useNavigate()
-    const [nextId, setNextId] = useNextId(1)
+    // const [nextId, setNextId] = useNextId(1)
 
     const { register, handleSubmit } = useForm();
 

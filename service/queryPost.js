@@ -5,12 +5,12 @@ function getPostQuery() {
 }
 
 function getPostByIdQuery() {
-    const query = `SELECT * FROM leafeiginodedb.posts where id = ?`;
+    const query = `SELECT * FROM leafeiginodedb.posts WHERE id = ?`;
     return query
 }
 
 function getPostByUserIdQuery() {
-    const query = `SELECT * FROM leafeiginodedb.todos where userId = ?`;
+    const query = `SELECT * FROM leafeiginodedb.posts WHERE userId = ?`;
     return query
 }
 
@@ -20,12 +20,12 @@ function addPostQuery() {
 }
 
 function deletePostQuery() {
-    const query = `DELETE FROM leafeiginodedb.posts where id = ?`;
+    const query = `DELETE FROM leafeiginodedb.posts WHERE id = ?`;
     return query
 }
 
 function updatePostQuery() {
-    const query = `UPDATE leafeiginodedb.posts SET title=?, body=?, userId=? where id = ?`;
+    const query = `UPDATE leafeiginodedb.posts SET title=?, body=?, userId=? WHERE id = ?`;
     return query
 }
 

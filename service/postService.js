@@ -24,7 +24,8 @@ export class PostService {
 
     async addPost(newPost) {
         const queryPost = addPostQuery();
-        await executeQuery(queryPost, Object.values(newPost));
+        const result = await executeQuery(queryPost, Object.values(newPost));
+        return result;
     }
 
     async deletePost(id) {

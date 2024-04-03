@@ -11,13 +11,14 @@ function SinglePost() {
     const [post, setPost] = useState(state.post);
     const [isEditable, setIsEditable] = useState(false)
     const { register, handleSubmit } = useForm()
+    const { userDetails } = useContext(AppContext)
 
     function updatePost(data) {
-        const updatedPost = { title: data.title, body: data.body }
+        const updatedPost = { title: data.title, body: data.body, userId: userDetails.id }
         fetch(`http://localhost:8080/posts/${post.id}`, {
-            method: 'PATCH',
+            method: 'PUT',
             body: JSON.stringify(updatedPost),
-            headers: { 'Content-type': 'application/json; charset=UTF-8', },
+            headers: { 'Content-type': 'application/json; charset=UTF-8' }
         }).then(response => {
             if (!response.ok)
                 throw 'Error' + response.status + ': ' + response.statusText;

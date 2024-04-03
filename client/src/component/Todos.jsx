@@ -31,7 +31,7 @@ function Todos() {
 
     function addTodo(event) {
         event.preventDefault();
-        const newTodo = { title: event.target[0].value, completed: false, userId: userDetails.id }
+        let newTodo = { title: event.target[0].value, completed: false, userId: userDetails.id }
         fetch('http://localhost:8080/todos', {
             method: 'POST',
             body: JSON.stringify(newTodo),
@@ -39,8 +39,9 @@ function Todos() {
         }).then(response => {
             if (!response.ok)
                 throw 'Error' + response.status + ': ' + response.statusText;
-                return response.json();
-        }).then(() => {
+            return response.json();
+        }).then(createdId => {
+            newTodo = { ...newTodo, id: createdId }
             setOriginalTodos(prev => [...prev, newTodo])
             setTodos(prev => [...prev, { ...newTodo, originalIndex: originalTodos.length, editable: false }])
             setShowAdditionForm(false)
@@ -66,9 +67,9 @@ function Todos() {
     function updateTodo(event, originalIndex, i, id) {
         event.preventDefault()
         const { title, completed } = event.target;
-        const updatedTodo = { title: title.value, completed: completed.checked }
+        const updatedTodo = { title: title.value, completed: completed.checked, userId: userDetails.id }
         fetch(`http://localhost:8080/todos/${id}`, {
-            method: 'PATCH',
+            method: 'PUT',
             body: JSON.stringify(updatedTodo),
             headers: { 'Content-type': 'application/json; charset=UTF-8' },
         }).then(response => {
@@ -162,9 +163,9 @@ function Todos() {
         {searchType ?
             (searchType == "completed" ? <>
                 <label htmlFor="completed">completed</label>
-                <input type="radio" name="completed" value="true" onChange={event => searchTodos(event)} />
+                <input type="radio" name="completed" value="1" onChange={event => searchTodos(event)} />
                 <label htmlFor="notCompleted">not completed</label>
-                <input type="radio" name="completed" value="false" onChange={event => searchTodos(event)} />
+                <input type="radio" name="completed" value="0" onChange={event => searchTodos(event)} />
             </> : <input type="text" name={searchType} onChange={event => searchTodos(event)} />)
             : <></>}
 

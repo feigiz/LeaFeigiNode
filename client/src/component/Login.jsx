@@ -17,9 +17,29 @@ function Login() {
     }, [])
 
     function loginUser(name, password) {
-        fetch(`http://localhost:8080/users/${name}`, {
+        // fetch(`http://localhost:8080/users/${name}`, {
+        //     method: 'POST',
+        //     body: JSON.stringify({ password: password }),
+        //     headers: { 'Content-type': 'application/json; charset=UTF-8' },
+        // }).then(response => {
+        //     if (!response.ok)
+        //         throw 'Error' + response.status + ': ' + response.statusText;
+        //     return response.json();
+        // }).then(user => {
+        //     user = user[0];
+        //     console.log(user)
+        //     if (!user)
+        //         throw 'incorrect data, you have to signup'
+        //     else {
+        //         setUserDetails(user);
+        //         localStorage.setItem('currentUser', JSON.stringify(user));
+        //         navigate(`/home/users/${user.id}`);
+        //     }
+        // }).catch(ex => alert(ex))
+
+        fetch(`http://localhost:8080/login`, {
             method: 'POST',
-            body: JSON.stringify({ password: password }),
+            body: JSON.stringify({ username: name, password: password }),
             headers: { 'Content-type': 'application/json; charset=UTF-8' },
         }).then(response => {
             if (!response.ok)

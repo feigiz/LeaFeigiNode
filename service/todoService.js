@@ -24,7 +24,8 @@ export class TodoService {
 
     async addTodo(newTodo) {
         const queryTodo = addTodoQuery();
-        await executeQuery(queryTodo, Object.values(newTodo));
+        const result = await executeQuery(queryTodo, Object.values(newTodo));
+        return result;
     }
 
     async deleteTodo(id) {

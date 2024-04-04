@@ -25,7 +25,6 @@ function deleteQuery(tableName) {
 }
 
 function updateQuery(tableName) {
-    // UPDATE ${tableName} SET title="vfv", completed=1 WHERE id = 25;
     const query = `UPDATE ${tableName} SET title=?, completed=?, userId=? WHERE id = ?`;
     return query
 }

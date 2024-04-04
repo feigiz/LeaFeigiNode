@@ -26,7 +26,7 @@ function addUserQuery() {
     // const query = `INSERT INTO users VALUES (${newUser.id, newUser.name, newUser.username, newUser.email, newUser.phone})`;
     // const query = `INSERT INTO users VALUES (5, 'Lea salikov','leasali','leasali@gmail.com','0583270933',true)`;
     //צריך לבדוק עם הוא קיים ופעיל/ לא פעיל (ואז להפוך לפעיל)
-    //וצריך גם שיכניס סיסמא
+    //וצריך גם להכניס סיסמא
     return query
 }
 

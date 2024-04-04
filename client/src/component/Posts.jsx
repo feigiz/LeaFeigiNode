@@ -2,19 +2,17 @@ import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import trash from "../icons/trash.png"
 import { AppContext } from "../App";
-// import useNextId from "./useNextId";
 
 function Posts() {
     const navigate = useNavigate();
     const [showAdditionForm, setShowAdditionForm] = useState(false);
-    // const [nextId, setNextId] = useNextId(3);
     const [searchType, setSearchType] = useState()
     const [posts, setPosts] = useState([])
     const [originalPosts, setOriginalPosts] = useState([])
     const { userDetails } = useContext(AppContext)
 
     useEffect(() => {
-        fetch(`http://localhost:8080/posts?userId=${userDetails.id}`)
+        fetch(`http://localhost:8080/posts`)
             .then(response => {
                 if (!response.ok)
                     throw 'Error' + response.status + ': ' + response.statusText;
@@ -36,7 +34,7 @@ function Posts() {
         fetch('http://localhost:8080/posts', {
             method: 'POST',
             body: JSON.stringify(newPost),
-            headers: { 'Content-type': 'application/json; charset=UTF-8' },
+            headers: { 'Content-type': 'application/json; charset=UTF-8' }
         }).then(response => {
             if (!response.ok)
                 throw 'Error' + response.status + ': ' + response.statusText;
@@ -46,7 +44,6 @@ function Posts() {
             setOriginalPosts(prev => [...prev, newPost])
             setPosts(prev => [...prev, { ...newPost, originalIndex: originalPosts.length }])
             setShowAdditionForm(false)
-            // setNextId(prev => prev + 1)
         }).catch((ex) => alert(ex));
     }
 
@@ -119,7 +116,9 @@ function Posts() {
                         <div className="post" key={i}>
                             <span>{post.id}: </span>
                             <span onClick={() => navigate(`./${post.id}`, { state: { post } })}>{post.title} </span>
-                            <img onClick={() => deletePost(post.originalIndex, i, post.id)} src={trash} />
+                            {post.userId == userDetails.id &&
+                                <img onClick={() => deletePost(post.originalIndex, i, post.id)} src={trash} />}
+
                         </div>
                         : <h2>No posts found</h2>)
                 })}

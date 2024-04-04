@@ -3,14 +3,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import trash from "../icons/trash.png"
 import edit from "../icons/edit.png"
 import { AppContext } from "../App";
-// import useNextId from "./useNextId";
-
  
 function Comments() {
     const { state } = useLocation();
     const [showAdditionForm, setShowAdditionForm] = useState(false);
     const [comments, setComments] = useState([]);
-    // const [nextId, setNextId] = useNextId(4);
     const { userDetails } = useContext(AppContext)
     const navigate = useNavigate();
     const { post } = state;
@@ -46,7 +43,6 @@ function Comments() {
             newComment = { ...newComment, id: createdId }
             setComments(prev => [...prev, { ...newComment, editable: false }])
             setShowAdditionForm(false)
-            // setNextId(prev => prev + 1)
         }).catch((ex) => alert(ex));
     }
 

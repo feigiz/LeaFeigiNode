@@ -56,8 +56,9 @@ function SinglePost() {
                 <h3>title: {post.title} </h3>
                 <p>body: {post.body} </p>
             </div>}
-        <img src={edit} onClick={() => setIsEditable(prev => !prev)} />
-        <img onClick={() => deletePost()} src={trash} />
+        {post.userId == userDetails.id &&<>
+            <img src={edit} onClick={() => setIsEditable(prev => !prev)} /> 
+            <img onClick={() => deletePost()} src={trash} /></>}
         <br /><br />
         <button onClick={() => navigate('./comments', { state: { post } })}>Show comments</button>
         <Outlet />

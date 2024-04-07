@@ -4,8 +4,8 @@ import { getTodoQuery, getTodoByIdQuery, addTodoQuery, deleteTodoQuery, updateTo
 
 export class TodoService {
 
-    async getTodo() {
-        const queryTodo = getTodoQuery();
+    async getTodo(queryparams) {
+        const queryTodo = getTodoQuery(queryparams);
         const result = await executeQuery(queryTodo);
         return result;
     }

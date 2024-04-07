@@ -25,8 +25,8 @@ function getUserByUsernameQuery() {
 function addUserQuery() {
     // const kk=`SELECT * FROM users WHERE id = ? AND isActive = 1`;
     // if()
-    const 
-    const query = `INSERT INTO leafeiginodedb.passwords VALUES (? , ?); INSERT INTO leafeiginodedb.users VALUES (null ,? ,? ,? ,?, 1); `;
+    const query=`INSERT INTO leafeiginodedb.passwords VALUES ("c" , 246) INSERT INTO leafeiginodedb.users VALUES (null ,"c c" ,"c" ,"z@z" ,"24680", 1)`;
+    // const query = `INSERT INTO leafeiginodedb.passwords VALUES (? , ?); INSERT INTO leafeiginodedb.users VALUES (null ,? ,? ,? ,?, 1); `;
     //צריך לבדוק עם הוא קיים ופעיל/ לא פעיל (ואז להפוך לפעיל)
     //וצריך גם להכניס סיסמא
     return query

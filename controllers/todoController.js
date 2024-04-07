@@ -4,7 +4,17 @@ export class TodoController {
     async getTodo(req, res, next) {
         try {
             const todoService = new TodoService();
-            const resultItems = req.query.userId ? await todoService.getTodoByUserId(req.query.userId) : await todoService.getTodo();
+            console.log(req.query);
+            // switch (req.query) {
+            //     case value:
+                    
+            //         break;
+            
+            //     default:
+            //         break;
+            // }
+            // const resultItems = req.query.userId ? await todoService.getTodoByUserId(req.query.userId) : await todoService.getTodo();
+            const resultItems = await todoService.getTodo(req.query);
             return res.status(200).json(resultItems);
         }
         catch (ex) {

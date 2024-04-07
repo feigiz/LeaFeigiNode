@@ -17,4 +17,11 @@
 19. כשמשנים בדפדפן את היואראל להתריע על שגיאה
 
 
-SELECT * FROM table_name LIMIT 10;
+-- _limit=2
+SELECT * FROM users LIMIT 2;
+
+-- _sort=name
+SELECT * FROM users order by name;
+
+-- field=       username="Bret"
+SELECT * FROM users where username="Bret";

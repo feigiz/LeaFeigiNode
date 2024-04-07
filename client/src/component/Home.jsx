@@ -16,6 +16,13 @@ function Home() {
                         setUserDetails(JSON.parse(localStorage.getItem('currentUser')))
         }, [])
 
+        // useEffect(() => {
+        //         if (userDetails.id != null){//לא נל אלה הפרמטר בשורת ה יו אר אל
+        //                 alert("Don't poke your nose into places that don't belong to you")
+        //                 //ולהחליף בחזרה את ה יו אר אל
+        //         }
+        // })
+
         return (userDetails && <>
                 <h1>Welcome {userDetails.name}</h1>
                 <button onClick={logout}>Logout</button>

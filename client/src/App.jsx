@@ -5,13 +5,11 @@ import Signup from './component/Signup';
 import Login from './component/Login';
 import Home from './component/Home';
 import Header from './component/Header';
-// import Albums from './component/Albums';
 import Info from './component/Info';
 import Posts from './component/Posts';
 import Todos from './component/Todos';
 import SinglePost from './component/SinglePost';
 import Comments from './component/Comments';
-// import Photos from './component/Photos';
 
 export const AppContext = createContext();
 
@@ -36,12 +34,6 @@ function App() {
                   <Route path="comments" element={<Comments />} />
                 </Route>
               </Route>
-              {/* <Route path="albums" >
-                <Route index element={<Albums />} />
-                <Route path=":id">
-                  <Route path="photos" element={<Photos />} />
-                </Route>
-              </Route> */}
             </Route>
           </Routes>
         </Router>

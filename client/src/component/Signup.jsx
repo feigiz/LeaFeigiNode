@@ -12,7 +12,7 @@ function Signup() {
         if (password != verifyPassword)
             alert("verify failed");
         else {
-            userIdentifyDetails.current = { username: name, website: password }
+            userIdentifyDetails.current = { username: name, password: password }
             checkUser();
         }
     }

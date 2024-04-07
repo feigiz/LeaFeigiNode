@@ -30,7 +30,10 @@ export class UserService {
 
     async addUser(newUser) {
         const queryUser = addUserQuery();
-        const result = await executeQuery(queryUser, Object.values(newUser));
+        let params = Object.values(newUser)
+        params.splice(4, 0, params[1]);//יש דרך יותר נורמלית?
+        console.log(params);
+        const result = await executeQuery(queryUser, params);
         return result;
     }
 

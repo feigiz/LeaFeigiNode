@@ -9,13 +9,13 @@ function getByIdQuery(tableName) {
     return query
 }
 
-function getByParamQuery(tableName,param) {
+function getByParamQuery(tableName, param) {
     const query = `SELECT * FROM ${tableName} WHERE ${param} = ?`;
     return query
 }
 
-function addQuery(tableName) {
-    const query = `INSERT INTO ${tableName} VALUES (null ,? ,? ,? )`;
+function addQuery(tableName) {//is it normal
+    const query = `INSERT INTO ${tableName} VALUES (null ,? ,? ,? ${tableName == "comments" && ",?"})`;
     return query
 }
 
@@ -24,8 +24,21 @@ function deleteQuery(tableName) {
     return query
 }
 
-function updateQuery(tableName) {
-    const query = `UPDATE ${tableName} SET title=?, completed=?, userId=? WHERE id = ?`;
+function updateQuery(tableName) {//is it normal
+    let query;
+    switch (tableName) {
+        case "todos":
+            query = `UPDATE ${tableName} SET title=?, completed=?, userId=? WHERE id = ?`;
+            break;
+        case "posts":
+            query = `UPDATE ${tableName} SET title=?, completed=?, userId=? WHERE id = ?`;
+            break;
+        case "comments":
+            query = `UPDATE ${tableName} SET title=?, completed=?, userId=? WHERE id = ?`;
+            break;
+        default:
+            break;
+    }
     return query
 }
 

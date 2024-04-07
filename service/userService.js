@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, getUserByUsernameQuery } from './queryUser.js'
+import { getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, getUserByUsernameQuery, registrationQuery } from './queryUser.js'
 // checkUserPasswordQuery
 export class UserService {
 
@@ -30,9 +30,12 @@ export class UserService {
 
     async addUser(newUser) {
         const queryUser = addUserQuery();
+        const queryRegistration = registrationQuery();
         let params = Object.values(newUser)
-        params.splice(4, 0, params[1]);//יש דרך יותר נורמלית?
-        console.log(params);
+        let passwrord=[params.pop()];
+        passwrord.push(params[1])
+        console.log(passwrord);
+        await executeQuery(queryRegistration, passwrord);
         const result = await executeQuery(queryUser, params);
         return result;
     }

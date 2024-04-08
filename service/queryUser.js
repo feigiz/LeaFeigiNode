@@ -2,22 +2,17 @@ function getUserQuery(queryparams) {
     const fields = Object.keys(queryparams).filter(param => {
         return param == 'id' || param == 'name' || param == 'username' || param == 'email' || param == 'phone';
     });
-    console.log(fields)
     let conditions = ""
     fields.forEach(field => conditions += "AND " + field + " = '" + queryparams[field] + "'")
-    console.log(conditions)
-    const query = `SELECT * FROM users WHERE isActive = 1 ${fields.length > 0 ? conditions : ""} ${queryparams._sort ? "ORDER BY " + queryparams._sort : ""} ${queryparams._limit ? "LIMIT " + queryparams._limit : ""}`
+    const query = `SELECT * FROM users WHERE isActive = 1 ${fields.length > 0 ? conditions : ""}
+     ${queryparams._sort ? "ORDER BY " + queryparams._sort : ""}
+      ${queryparams._limit ? "LIMIT " + queryparams._limit : ""}`
     console.log(query)
     return query
 }
 
 function getUserByIdQuery() {
     const query = `SELECT * FROM users WHERE id = ? AND isActive = 1`;
-    return query
-}
-
-function getUserByUsernameQuery() {
-    const query = `SELECT * FROM users WHERE username = ?`;
     return query
 }
 
@@ -38,12 +33,11 @@ function addUserQuery() {
 
 function deleteUserQuery() {
     const query = `UPDATE users SET isActive = 0 WHERE id = ?`;
-    // const query = `DELETE FROM users WHERE id = ?`;
     return query
 }
 
 function updateUserQuery() {
-    const query = `UPDATE users SET name=?, username=?, email=?, phone=?, isActive=? WHERE id = ?`;
+    const query = `UPDATE users SET ${keys.map(key => key + "= ?")} WHERE id = ?`;
     return query
 }
 
@@ -52,7 +46,6 @@ function updatePasswordQuery() {
     return query
 }
 
-// checkUserPasswordQuery
 export {
-    getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, getUserByUsernameQuery, registrationQuery, updatePasswordQuery
+    getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, registrationQuery, updatePasswordQuery
 }

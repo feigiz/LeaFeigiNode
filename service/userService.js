@@ -35,7 +35,7 @@ export class UserService {
     async updateUser(updatedUser, id) {
         let data = Object.values(updatedUser);
         data.push(id)
-        const queryUser = updateUserQuery();
+        const queryUser = updateUserQuery(Object.keys(updatedUser));
         await executeQuery(queryUser, data);
     }
 

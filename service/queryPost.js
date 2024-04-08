@@ -28,7 +28,7 @@ function deletePostQuery() {
 }
 
 function updatePostQuery() {
-    const query = `UPDATE posts SET ${keys[0]}=?, ${keys[1]}=?, ${keys[2]}=? WHERE id = ?`;
+    const query = `UPDATE posts SET ${keys.map(key => key + "= ?")} WHERE id = ?`;
     return query
 }
 

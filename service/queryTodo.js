@@ -28,7 +28,7 @@ function deleteTodoQuery() {
 }
 
 function updateTodoQuery(keys) {
-    const query = `UPDATE todos SET ${keys[0]}=?, ${keys[1]}=?, ${keys[2]}=? WHERE id = ?`;
+    const query = `UPDATE todos SET ${keys.map(key => key + "= ?")} WHERE id = ?`;
     return query
 }
 

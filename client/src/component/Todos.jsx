@@ -3,14 +3,12 @@ import trash from "../icons/trash.png"
 import edit from "../icons/edit.png"
 import { useContext } from "react";
 import { AppContext } from "../App";
-// import useNextId from "./useNextId";
 
 function Todos() {
     const { userDetails } = useContext(AppContext)
     const [originalTodos, setOriginalTodos] = useState([]);
     const [todos, setTodos] = useState([]);
     const [showAdditionForm, setShowAdditionForm] = useState(false);
-    // const [nextId, setNextId] = useNextId(2);
     const [searchType, setSearchType] = useState();
 
     useEffect(() => {
@@ -45,7 +43,6 @@ function Todos() {
             setOriginalTodos(prev => [...prev, newTodo])
             setTodos(prev => [...prev, { ...newTodo, originalIndex: originalTodos.length, editable: false }])
             setShowAdditionForm(false)
-            // setNextId(prevId => prevId + 1)
         }).catch((ex) => alert(ex));
     }
 

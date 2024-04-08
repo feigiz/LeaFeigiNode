@@ -8,4 +8,9 @@ export class LoginService {
         const result = await executeQuery(queryLogin, [username, password]);
         return result;
     }
+    async changePassword(username, password) {
+        const queryLogin = checkUserPasswordQuery();
+        const result = await executeQuery(queryLogin, [username, password]);
+        return result;
+    }
 }

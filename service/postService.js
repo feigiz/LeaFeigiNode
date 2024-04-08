@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getPostQuery, getPostByIdQuery, addPostQuery, deletePostQuery, updatePostQuery, getPostByUserIdQuery } from './queryPost.js'
+import { getPostQuery, getPostByIdQuery, addPostQuery, deletePostQuery, updatePostQuery } from './queryPost.js'
 
 export class PostService {
 
@@ -12,12 +12,6 @@ export class PostService {
 
     async getPostById(id) {
         const queryPost = getPostByIdQuery();
-        const result = await executeQuery(queryPost, [id]);
-        return result;
-    }
-
-    async getPostByUserId(id) {
-        const queryPost = getPostByUserIdQuery();
         const result = await executeQuery(queryPost, [id]);
         return result;
     }

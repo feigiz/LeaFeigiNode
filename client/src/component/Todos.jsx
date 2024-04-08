@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import trash from "../icons/trash.png"
 import edit from "../icons/edit.png"
-import { useContext } from "react";
 import { AppContext } from "../App";
 
 function Todos() {

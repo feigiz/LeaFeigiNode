@@ -1,11 +1,11 @@
 import express from 'express';
 import cors from 'cors';
 import { todoRouter } from './router/todoRouter.js';
-import { userRouter } from './router/userRouter.js'
-import { postRouter } from './router/postRouter.js'
-import { commentRouter } from './router/commentRouter.js'
+import { userRouter } from './router/userRouter.js';
+import { postRouter } from './router/postRouter.js';
+import { commentRouter } from './router/commentRouter.js';
 import { loginRouter } from './router/loginRouter.js';
-import { logErrors } from './middleware/logError.js'
+import { logErrors } from './middleware/logError.js';
 
 const app = express();
 

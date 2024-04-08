@@ -1,12 +1,3 @@
-
-// function checkUserPasswordQuery() {
-//     const query = `SELECT * FROM leafeiginodedb.passwords P NATURAL JOIN
-//     users U WHERE U.username = ? AND P.password = ? AND isActive = 1`;
-//     // const query = `SELECT * FROM users WHERE EXISTS
-//     // (SELECT * FROM leafeiginodedb.passwords WHERE username = ? AND password = ?)`;
-//     return query
-// }
-
 function getUserQuery(queryparams) {
     const fields = Object.keys(queryparams).filter(param => {
         return param == 'id' || param == 'name' || param == 'username' || param == 'email' || param == 'phone';
@@ -55,7 +46,13 @@ function updateUserQuery() {
     const query = `UPDATE users SET name=?, username=?, email=?, phone=?, isActive=? WHERE id = ?`;
     return query
 }
+
+function updatePasswordQuery() {
+    const query = `UPDATE passwords SET password=? WHERE username=? and password=?`;
+    return query
+}
+
 // checkUserPasswordQuery
 export {
-    getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, getUserByUsernameQuery, registrationQuery
+    getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, getUserByUsernameQuery, registrationQuery, updatePasswordQuery
 }

@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getCommentQuery, getCommentByIdQuery, addCommentQuery, deleteCommentQuery, updateCommentQuery, getCommentByPostIdQuery } from './queryComment.js'
+import { getCommentQuery, getCommentByIdQuery, addCommentQuery, deleteCommentQuery, updateCommentQuery } from './queryComment.js'
 
 export class CommentService {
 
@@ -12,12 +12,6 @@ export class CommentService {
 
     async getCommentById(id) {
         const queryComment = getCommentByIdQuery();
-        const result = await executeQuery(queryComment, [id]);
-        return result;
-    }
-
-    async getCommentByPostId(id) {
-        const queryComment = getCommentByPostIdQuery();
         const result = await executeQuery(queryComment, [id]);
         return result;
     }

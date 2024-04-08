@@ -1,19 +1,10 @@
 import { TodoService } from '../service/todoService.js'
-export class TodoController {
 
+export class TodoController {
     async getTodo(req, res, next) {
         try {
             const todoService = new TodoService();
             console.log(req.query);
-            // switch (req.query) {
-            //     case value:
-                    
-            //         break;
-            
-            //     default:
-            //         break;
-            // }
-            // const resultItems = req.query.userId ? await todoService.getTodoByUserId(req.query.userId) : await todoService.getTodo();
             const resultItems = await todoService.getTodo(req.query);
             return res.status(200).json(resultItems);
         }
@@ -29,7 +20,6 @@ export class TodoController {
         try {
             const todoService = new TodoService();
             const resultItem = await todoService.getTodoById(req.params.id);
-            // res.status(200).json({ status: 200, data: resultItem });
             res.status(200).json(resultItem);
         }
         catch (ex) {

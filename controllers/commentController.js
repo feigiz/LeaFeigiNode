@@ -4,7 +4,6 @@ export class CommentController {
     async getComment(req, res, next) {
         try {
             const commentService = new CommentService();
-            // const resultItems = req.query.postId ? await commentService.getCommentByPostId(req.query.postId) : await commentService.getComment();
             const resultItems = await commentService.getComment(req.query);
             return res.status(200).json(resultItems);
         }

@@ -9,10 +9,8 @@ const usercontroller = new UserController()
 userRouter.get("/:id", usercontroller.getUserById)
 userRouter.get("/", usercontroller.getUser)
 userRouter.post("/", usercontroller.addUser)
-// userRouter.post("/:username", usercontroller.checkUserPassword)
 userRouter.delete("/:id", usercontroller.deleteUser)
 userRouter.put("/:id", usercontroller.updateUser)
+userRouter.patch("/", usercontroller.updatePassword)
 
-export {
-    userRouter
-}
+export { userRouter }

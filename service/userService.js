@@ -1,14 +1,8 @@
 
 import { executeQuery } from './db.js';
-import { getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, getUserByUsernameQuery, registrationQuery } from './queryUser.js'
-// checkUserPasswordQuery
-export class UserService {
+import { getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, registrationQuery, updatePasswordQuery } from './queryUser.js'
 
-    // async checkUserPassword(username, password) {
-    //     const queryUser = checkUserPasswordQuery();
-    //     const result = await executeQuery(queryUser, [username, password]);
-    //     return result;
-    // }
+export class UserService {
 
     async getUser(queryparams) {
         const queryUser = getUserQuery(queryparams);
@@ -19,12 +13,6 @@ export class UserService {
     async getUserById(id) {
         const queryUser = getUserByIdQuery();
         const result = await executeQuery(queryUser, [id]);
-        return result;
-    }
-
-    async getUserByUsername(username) {
-        const queryUser = getUserByUsernameQuery();
-        const result = await executeQuery(queryUser, [username]);
         return result;
     }
 
@@ -49,6 +37,12 @@ export class UserService {
         data.push(id)
         const queryUser = updateUserQuery();
         await executeQuery(queryUser, data);
+    }
+
+    async updatePassword(userPasswordDetails) {
+        const queryUser = updatePasswordQuery();
+        const result = await executeQuery(queryUser, Object.values(userPasswordDetails));
+        return result;
     }
 
 }

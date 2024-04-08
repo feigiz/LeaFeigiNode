@@ -11,6 +11,4 @@ postRouter.post("/", postcontroller.addPost)
 postRouter.delete("/:id", postcontroller.deletePost)
 postRouter.put("/:id", postcontroller.updatePost)
 
-export {
-    postRouter
-}
+export { postRouter }

@@ -1,4 +1,3 @@
-
 import express from "express";
 import { CommentController } from '../controllers/commentController.js'
 const commentRouter = express.Router();
@@ -11,6 +10,4 @@ commentRouter.post("/", commentcontroller.addComment)
 commentRouter.delete("/:id", commentcontroller.deleteComment)
 commentRouter.put("/:id", commentcontroller.updateComment)
 
-export {
-    commentRouter
-}
+export { commentRouter }

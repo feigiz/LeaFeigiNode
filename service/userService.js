@@ -10,8 +10,8 @@ export class UserService {
     //     return result;
     // }
 
-    async getUser() {
-        const queryUser = getUserQuery();
+    async getUser(queryparams) {
+        const queryUser = getUserQuery(queryparams);
         const result = await executeQuery(queryUser);
         return result;
     }

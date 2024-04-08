@@ -4,7 +4,8 @@ export class UserController {
     async getUser(req, res, next) {
         try {
             const userService = new UserService();
-            const resultItems =req.query.username ? await userService.getUserByUsername(req.query.username) :await userService.getUser();
+            // const resultItems =req.query.username ? await userService.getUserByUsername(req.query.username) :await userService.getUser();
+            const resultItems = await userService.getUser(req.query);
             return res.status(200).json(resultItems);
         }
         catch (ex) {

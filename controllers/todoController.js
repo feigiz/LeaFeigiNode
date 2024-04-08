@@ -33,6 +33,8 @@ export class TodoController {
     async addTodo(req, res, next) {
         try {
             const todoService = new TodoService();
+            console.log("aaa")
+            console.log(req.body)
             const resultItem = await todoService.addTodo(req.body);
             res.status(200).json(resultItem.insertId);
         }

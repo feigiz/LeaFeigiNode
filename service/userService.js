@@ -1,6 +1,6 @@
 
 import { executeQuery } from './db.js';
-import { getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, registrationQuery, updatePasswordQuery } from './queryUser.js'
+import { getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, registrationQuery, updatePasswordQuery, checkIfUserExistQuery,makeUserActiveQuery } from './queryUser.js'
 
 export class UserService {
 
@@ -17,13 +17,22 @@ export class UserService {
     }
 
     async addUser(newUser) {
-        const queryUser = addUserQuery();
-        const queryRegistration = registrationQuery();
-        let params = Object.values(newUser)
-        let password = [params[1], params.pop()]
-        console.log(password);
-        await executeQuery(queryRegistration, password);
-        const result = await executeQuery(queryUser, params);
+        const queryUserExistence = checkIfUserExistQuery();
+        const existence = await executeQuery(queryUserExistence, [newUser.username]);
+        let result;
+        if (existence != null) {
+            const queryActivity = makeUserActiveQuery();
+            result = await executeQuery(queryActivity, [newUser.username]);
+        }
+        else {
+            const queryUser = addUserQuery();
+            const queryRegistration = registrationQuery();
+            let params = Object.values(newUser)
+            let password = [params[1], params.pop()]
+            console.log(password);
+            await executeQuery(queryRegistration, password);
+            result = await executeQuery(queryUser, params);
+        }
         return result;
     }
 

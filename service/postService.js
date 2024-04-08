@@ -17,7 +17,7 @@ export class PostService {
     }
 
     async addPost(newPost) {
-        const queryPost = addPostQuery();
+        const queryPost = addPostQuery(Object.keys(newPost));
         const result = await executeQuery(queryPost, Object.values(newPost));
         return result;
     }
@@ -30,7 +30,7 @@ export class PostService {
     async updatePost(updatedPost, id) {
         let data = Object.values(updatedPost);
         data.push(id)
-        const queryPost = updatePostQuery();
+        const queryPost = updatePostQuery(Object.keys(updatedPost));
         await executeQuery(queryPost, data);
     }
 

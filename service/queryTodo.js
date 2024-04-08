@@ -19,7 +19,6 @@ function getTodoByIdQuery() {
 
 function addTodoQuery(keys) {
     const query = `INSERT INTO todos (id, ${keys.map(key => key)}) VALUES (null ,? ,? ,? )`;
-    console.log(query)
     return query
 }
 

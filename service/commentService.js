@@ -17,7 +17,7 @@ export class CommentService {
     }
 
     async addComment(newComment) {
-        const queryComment = addCommentQuery();
+        const queryComment = addCommentQuery(Object.keys(newComment));
         const result = await executeQuery(queryComment, Object.values(newComment));
         return result;
     }
@@ -30,7 +30,7 @@ export class CommentService {
     async updateComment(updatedComment, id) {
         let data = Object.values(updatedComment);
         data.push(id)
-        const queryComment = updateCommentQuery();
+        const queryComment = updateCommentQuery(Object.keys(updatedComment));
         await executeQuery(queryComment, data);
     }
 }

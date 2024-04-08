@@ -21,6 +21,16 @@ function registrationQuery() {
     return query
 }
 
+function checkIfUserExistQuery() {
+    const query = `SELECT * FROM users WHERE username = ? AND isActive = 0`;
+    return query
+}
+
+function makeUserActiveQuery() {
+    const query = `UPDATE users SET isActive = 1 WHERE username = ?`;
+    return query
+}
+
 function addUserQuery() {
     // const kk=`SELECT * FROM users WHERE id = ? AND isActive = 1`;
     // if()
@@ -47,5 +57,5 @@ function updatePasswordQuery() {
 }
 
 export {
-    getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, registrationQuery, updatePasswordQuery
+    getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, registrationQuery, updatePasswordQuery, checkIfUserExistQuery,makeUserActiveQuery
 }

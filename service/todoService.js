@@ -30,7 +30,7 @@ export class TodoService {
     async updateTodo(updatedTodo, id) {
         let data = Object.values(updatedTodo);
         data.push(id)
-        const queryTodo = updateTodoQuery();
+        const queryTodo = updateTodoQuery(Object.keys(updatedTodo));
         await executeQuery(queryTodo, data);
     }
 }

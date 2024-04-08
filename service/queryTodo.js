@@ -28,8 +28,8 @@ function deleteTodoQuery() {
     return query
 }
 
-function updateTodoQuery() {
-    const query = `UPDATE todos SET title=?, completed=?, userId=? WHERE id = ?`;
+function updateTodoQuery(keys) {
+    const query = `UPDATE todos SET ${keys[0]}=?, ${keys[1]}=?, ${keys[2]}=? WHERE id = ?`;
     return query
 }
 

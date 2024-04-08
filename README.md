@@ -15,13 +15,3 @@
 17. אם צריך להשלים את כל הנתיבים והפונקציות לכולם
 18. פעולות מתקדמות
 19. כשמשנים בדפדפן את היואראל להתריע על שגיאה
-
-
--- _limit=2
-SELECT * FROM users LIMIT 2;
-
--- _sort=name
-SELECT * FROM users order by name;
-
--- field=       username="Bret"
-SELECT * FROM users where username="Bret";

@@ -8,13 +8,12 @@
 // }
 
 function getUserQuery(queryparams) {
-
     const fields = Object.keys(queryparams).filter(param => {
         return param == 'id' || param == 'name' || param == 'username' || param == 'email' || param == 'phone';
     });
     console.log(fields)
     let conditions = ""
-    fields.forEach(field => conditions += "AND " + field + " = " + queryparams[field])
+    fields.forEach(field => conditions += "AND " + field + " = '" + queryparams[field] + "'")
     console.log(conditions)
     const query = `SELECT * FROM users WHERE isActive = 1 ${fields.length > 0 ? conditions : ""} ${queryparams._sort ? "ORDER BY " + queryparams._sort : ""} ${queryparams._limit ? "LIMIT " + queryparams._limit : ""}`
     console.log(query)

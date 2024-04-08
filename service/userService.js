@@ -32,10 +32,9 @@ export class UserService {
         const queryUser = addUserQuery();
         const queryRegistration = registrationQuery();
         let params = Object.values(newUser)
-        let passwrord=[params.pop()];
-        passwrord.push(params[1])
-        console.log(passwrord);
-        await executeQuery(queryRegistration, passwrord);
+        let password = [params[1], params.pop()]
+        console.log(password);
+        await executeQuery(queryRegistration, password);
         const result = await executeQuery(queryUser, params);
         return result;
     }

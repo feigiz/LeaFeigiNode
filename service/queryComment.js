@@ -5,7 +5,7 @@ function getCommentQuery(queryparams) {
     });
     console.log(fields)
     let conditions = "WHERE "
-    fields.forEach(field => conditions += field + " = " + queryparams[field] + " AND ")
+    fields.forEach(field => conditions += field + " = '" + queryparams[field] + "' AND ")
     console.log(conditions)
     const query = `SELECT * FROM comments ${fields.length > 0 ? conditions.substring(0, conditions.length - 5) : ""} ${queryparams._sort ? "ORDER BY " + queryparams._sort : ""} ${queryparams._limit ? "LIMIT " + queryparams._limit : ""}`
     console.log(query)

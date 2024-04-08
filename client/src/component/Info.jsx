@@ -3,7 +3,7 @@ import { AppContext } from "../App";
 
 function Info() {
     const { userDetails } = useContext(AppContext)
-    const [showPasswordChangingForm, setShowPasswordChangingForm] = useState(false);
+    // const [showPasswordChangingForm, setShowPasswordChangingForm] = useState(false);
 
     function updatePassword(event) {
         event.preventDefault()
@@ -19,7 +19,7 @@ function Info() {
             setOriginalTodos(prev => [...prev.slice(0, originalIndex), { ...prev[originalIndex], ...updatedTodo }, ...prev.slice(originalIndex + 1, prev.length)])
             setTodos(prev => [...prev.slice(0, i), { ...prev[i], ...updatedTodo }, ...prev.slice(i + 1, prev.length)])
             changeEditable(i)
-            setShowPasswordChangingForm(false)
+            // setShowPasswordChangingForm(false)
         }).catch((ex) => alert(ex));
     }
 
@@ -37,14 +37,14 @@ function Info() {
 
     return (<>
         {print(userDetails)}
-    <button onClick={setShowPasswordChangingForm(prev => !prev)}>Change password</button>
+    {/* <button onClick={setShowPasswordChangingForm(prev => !prev)}>Change password</button>
     {showPasswordChangingForm && <form onSubmit={updatePassword}>
             <label htmlFor='oldPassword' >old password</label>
             <input name='oldPassword' type='text' required></input>
             <label htmlFor='newPassword' >new password</label>
             <input name='newPassword' type='text' required></input>
             <button type="submit">update</button>
-        </form>}     
+        </form>}      */}
     </>);
 }
 

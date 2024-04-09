@@ -27,7 +27,6 @@ function Login() {
             return response.json();
         }).then(user => {
             user = user[0];
-            console.log(user)
             if (!user)
                 throw 'incorrect data, you have to signup'
             else {

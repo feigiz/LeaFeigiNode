@@ -29,7 +29,6 @@ function deleteCommentQuery() {
 
 function updateCommentQuery(keys) {
     const query = `UPDATE comments SET ${keys.map(key => key + "= ?")} WHERE id = ?`;
-    console.log(query)
     return query
 }
 

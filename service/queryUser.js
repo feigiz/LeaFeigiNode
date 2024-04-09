@@ -21,23 +21,18 @@ function registrationQuery() {
     return query
 }
 
-function checkIfUserExistQuery() {
-    const query = `SELECT * FROM users WHERE username = ? AND isActive = 0`;
-    return query
-}
+// function checkIfUserExistQuery() {
+//     const query = `SELECT * FROM users WHERE username = ? AND isActive = 0`;
+//     return query
+// }
 
-function makeUserActiveQuery() {
-    const query = `UPDATE users SET isActive = 1 WHERE username = ?`;
-    return query
-}
+// function makeUserActiveQuery() {
+//     const query = `UPDATE users SET isActive = 1 WHERE username = ?`;
+//     return query
+// }
 
 function addUserQuery() {
-    // const kk=`SELECT * FROM users WHERE id = ? AND isActive = 1`;
-    // if()
     const query = `INSERT INTO users VALUES (null ,? ,? ,? ,?, 1)`;
-    // const query = `INSERT INTO leafeiginodedb.passwords VALUES (? , ?); INSERT INTO leafeiginodedb.users VALUES (null ,? ,? ,? ,?, 1); `;
-    //צריך לבדוק עם הוא קיים ופעיל/ לא פעיל (ואז להפוך לפעיל)
-    //וצריך גם להכניס סיסמא
     return query
 }
 
@@ -46,7 +41,7 @@ function deleteUserQuery() {
     return query
 }
 
-function updateUserQuery() {
+function updateUserQuery(keys) {
     const query = `UPDATE users SET ${keys.map(key => key + "= ?")} WHERE id = ?`;
     return query
 }
@@ -57,5 +52,6 @@ function updatePasswordQuery() {
 }
 
 export {
-    getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, registrationQuery, updatePasswordQuery, checkIfUserExistQuery,makeUserActiveQuery
+    getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, registrationQuery, updatePasswordQuery
+    //  ,checkIfUserExistQuery,makeUserActiveQuery
 }

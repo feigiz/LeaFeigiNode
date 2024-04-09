@@ -17,7 +17,7 @@ function getCommentByIdQuery() {
     return query
 }
 
-function addCommentQuery() {
+function addCommentQuery(keys) {
     const query = `INSERT INTO comments (id, ${keys.map(key => key)}) VALUES (null ,? ,? ,? ,? )`;
     return query
 }

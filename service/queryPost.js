@@ -17,7 +17,7 @@ function getPostByIdQuery() {
     return query
 }
 
-function addPostQuery() {
+function addPostQuery(keys) {
     const query = `INSERT INTO posts (id, ${keys.map(key => key)}) VALUES (null ,? ,? ,? )`;
     return query
 }
@@ -27,7 +27,7 @@ function deletePostQuery() {
     return query
 }
 
-function updatePostQuery() {
+function updatePostQuery(keys) {
     const query = `UPDATE posts SET ${keys.map(key => key + "= ?")} WHERE id = ?`;
     return query
 }

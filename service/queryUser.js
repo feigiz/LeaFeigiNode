@@ -21,16 +21,6 @@ function registrationQuery() {
     return query
 }
 
-// function checkIfUserExistQuery() {
-//     const query = `SELECT * FROM users WHERE username = ? AND isActive = 0`;
-//     return query
-// }
-
-// function makeUserActiveQuery() {
-//     const query = `UPDATE users SET isActive = 1 WHERE username = ?`;
-//     return query
-// }
-
 function addUserQuery() {
     const query = `INSERT INTO users VALUES (null ,? ,? ,? ,?, 1)`;
     return query
@@ -53,5 +43,4 @@ function updatePasswordQuery() {
 
 export {
     getUserQuery, getUserByIdQuery, addUserQuery, deleteUserQuery, updateUserQuery, registrationQuery, updatePasswordQuery
-    //  ,checkIfUserExistQuery,makeUserActiveQuery
 }

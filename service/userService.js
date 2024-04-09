@@ -17,14 +17,6 @@ export class UserService {
     }
 
     async addUser(newUser) {
-        // const queryUserExistence = checkIfUserExistQuery();
-        // const existence = await executeQuery(queryUserExistence, [newUser.username]);
-        // let result;
-        // if (existence != null) {
-        //     const queryActivity = makeUserActiveQuery();
-        //     result = await executeQuery(queryActivity, [newUser.username]);
-        // }
-        // else {
         const queryUser = addUserQuery();
         const queryRegistration = registrationQuery();
         let params = Object.values(newUser)
@@ -32,7 +24,6 @@ export class UserService {
         console.log(password);
         await executeQuery(queryRegistration, password);
         const result = await executeQuery(queryUser, params);
-        // }
         return result;
     }
 
@@ -45,7 +36,8 @@ export class UserService {
         let data = Object.values(updatedUser);
         data.push(id)
         const queryUser = updateUserQuery(Object.keys(updatedUser));
-        await executeQuery(queryUser, data);
+        const result=await executeQuery(queryUser, data);
+        return result;
     }
 
     async updatePassword(userPasswordDetails) {

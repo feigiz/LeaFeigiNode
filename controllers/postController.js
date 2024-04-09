@@ -60,12 +60,14 @@ export class PostController {
     async updatePost(req, res, next) {
         try {
             const postService = new PostService();
-            await postService.updatePost(req.body, req.params.id);
+            const result = await postService.updatePost(req.body, req.params.id);
+            if (result == null)
+                throw ("this data cannot be updated")
             res.status(200).json(req.params.id);
         }
         catch (ex) {
             const err = {}
-            err.statusCode = 500;
+            err.statusCode = ex == "this data cannot be updated" ? 409 : 500;
             err.message = ex;
             next(err)
         }

@@ -60,12 +60,14 @@ export class CommentController {
     async updateComment(req, res, next) {
         try {
             const commentService = new CommentService();
-            await commentService.updateComment(req.body, req.params.id);
+            const result = await commentService.updateComment(req.body, req.params.id);
+            if (result == null)
+                throw ("this data cannot be updated")
             res.status(200).json(req.params.id);
         }
         catch (ex) {
             const err = {}
-            err.statusCode = ex.errno == 1054 ? 400 : 500;
+            err.statusCode = ex == "this data cannot be updated" ? 409 : 500;
             err.message = ex;
             next(err)
         }

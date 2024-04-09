@@ -57,7 +57,7 @@ export class PostController {
         try {
             const postService = new PostService();
             await postService.deletePost(req.params.id);
-            res.status(200).json({ status: 200, data: req.params.id });
+            res.status(200).json(req.params.id);
             // const resultItem = await postService.deletePost(req.params.id);
             // if (resultItem.affectedRows > 0)
             //     res.status(200).json({ status: 200, data: req.params.id });
@@ -80,7 +80,7 @@ export class PostController {
             await postService.updatePost(req.body, req.params.id);
             // const resultItem = await postService.updatePost(req.body, req.params.id);
             // if (resultItem.affectedRows > 0)
-            res.status(200).json({ status: 200, data: req.params.id });
+            res.status(200).json(req.params.id);
             // const err = {}
             // err.statusCode = 404;
             // err.message = "post not found";
